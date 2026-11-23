@@ -1,8 +1,8 @@
 # Project charter — project objectives
 
-**Task:** P0-001 — Define project objectives  
-**Baseline date:** 23 November 2026  
-**Review state:** Objectives documented and self-reviewed for P0-001. Full phase-P0 charter approval and the other phase deliverables remain pending.  
+**Task:** P0-001 — Define project objectives
+**Baseline date:** 23 November 2026
+**Review state:** Objectives and the completed P0 planning package were self-reviewed through P0-045 on 2026-11-24. See the [phase review and artifact index](../testing/evidence/P0-phase-review.md). Owner approval of the parallel flow is recorded in ADR-0001; separate owner approval of the full planning package is not claimed.
 **System state:** Planning scaffold; no application or infrastructure is implemented.
 
 ## Purpose and intended value
