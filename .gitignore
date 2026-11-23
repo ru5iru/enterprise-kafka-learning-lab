@@ -1,0 +1,51 @@
+# OS, editors and local env
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+*.swp
+.env
+.env.*
+!.env.example
+
+# Java / Maven / Gradle
+target/
+build/
+.gradle/
+*.class
+*.log
+
+# Python local helpers
+__pycache__/
+*.py[cod]
+.venv/
+
+# Credentials and PKI secrets
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.truststore
+*.kdb
+*.asc
+*.secret
+secrets/
+**/private/
+
+# Kubernetes / Terraform local state
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfvars
+*.tfplan
+kubeconfig
+
+# Runtime and generated data
+*.pid
+*.tmp
+*.bak
+coverage/
+reports/generated/
