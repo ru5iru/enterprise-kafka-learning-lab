@@ -1,8 +1,8 @@
 # P0-003 - document review evidence
 
-**Date:** 2026-11-24  
-**Reviewer:** Executing coding agent, self-review; no independent approval.  
-**Baseline:** `b37f8684a0d82591e3c1830348e2fd09bceb7f99`  
+**Date:** 2026-11-24
+**Reviewer:** Executing coding agent, self-review; no independent approval.
+**Baseline:** `b37f8684a0d82591e3c1830348e2fd09bceb7f99`
 **Artifact:** `docs/requirements/scope-boundaries.md`
 
 ## Semantic review
@@ -77,3 +77,7 @@ Initial verification stopped on assumptions of 18 physical columns and a BOM. In
 ## Limits
 
 No runtime, integration, performance, security scanner, or fault-injection test ran. Documentary review and integrity checks satisfy this documentation task; they do not establish production readiness. Negative fixture changes exist only in memory. Git publication is verified separately before beginning the next task.
+
+## Staged-check correction
+
+The first staged `git diff --cached --check` flagged Markdown hard-break trailing spaces in the three new files. The combined display command had returned the later stat command status, so the commit proceeded before that finding was corrected. A follow-up P0-003 commit strips trailing spaces, records this actual finding, and reruns the baseline diff check with an enforced exit code. No history rewrite or force push is used. Future task commits gate on the staged check separately.

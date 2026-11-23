@@ -1,6 +1,6 @@
 # P0-003 - Define scope boundaries
 
-**Date:** 2026-11-24  
+**Date:** 2026-11-24
 **State:** Reviewed planning decision; no runtime implementation or measured results.
 
 ## Purpose and scope rule
