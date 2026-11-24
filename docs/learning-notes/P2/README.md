@@ -15,3 +15,4 @@ These are task-specific concept reviews and isolated WSL experiments. The CSV de
 | P2-009 | [Java concurrency](P2-009.md) | [Evidence](../../testing/evidence/P2-009-review.md) |
 | P2-010 | [Thread pools](P2-010.md) | [Evidence](../../testing/evidence/P2-010-review.md) |
 | P2-011 | [CompletableFuture](P2-011.md) | [Evidence](../../testing/evidence/P2-011-review.md) |
+| P2-012 | [JVM memory basics](P2-012.md) | [Evidence](../../testing/evidence/P2-012-review.md) |
