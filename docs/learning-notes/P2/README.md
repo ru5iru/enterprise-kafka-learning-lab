@@ -1,6 +1,6 @@
-# P2 Java foundations learning
+# P2 Java and Spring Boot learning
 
-These are task-specific concept reviews and isolated WSL experiments. The CSV determines completion; this partial sequence does not satisfy the full P2 application/container phase gate. No Spring Boot application is created before P2-014. Use the existing Windows checkout and execute Java/Maven in Ubuntu WSL.
+These are task-specific concept reviews, isolated WSL experiments and the P2-014 Spring Boot bootstrap. The CSV determines completion; this partial sequence does not satisfy the full P2 application/container phase gate. P2-014 creates only a non-web starter; later lifecycle, DI, configuration, REST and container lessons remain separate tasks. Use the existing Windows checkout and execute Java/Maven in Ubuntu WSL.
 
 | Task | Review | Verification |
 |---|---|---|
@@ -17,3 +17,4 @@ These are task-specific concept reviews and isolated WSL experiments. The CSV de
 | P2-011 | [CompletableFuture](P2-011.md) | [Evidence](../../testing/evidence/P2-011-review.md) |
 | P2-012 | [JVM memory basics](P2-012.md) | [Evidence](../../testing/evidence/P2-012-review.md) |
 | P2-013 | [SLF4J logging](P2-013.md) | [Evidence](../../testing/evidence/P2-013-review.md) |
+| P2-014 | [Create Spring Boot application](P2-014.md) | [Evidence](../../testing/evidence/P2-014-review.md) |
