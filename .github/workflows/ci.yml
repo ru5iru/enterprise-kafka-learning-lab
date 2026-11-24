@@ -42,3 +42,17 @@ jobs:
           test "$(uname -m)" = x86_64
           test "$(. /etc/os-release; printf '%s' "$ID")" = ubuntu
           printf 'Ubuntu x86_64 runner ready\n'
+      - name: Install pinned JDK
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo bash scripts/wsl/install-jdk.sh
+          printf 'JAVA_HOME=/opt/kafka-lab/jdk-25.0.5.1\n' >> "$GITHUB_ENV"
+          printf '/opt/kafka-lab/jdk-25.0.5.1/bin\n' >> "$GITHUB_PATH"
+      - name: Verify Java compiler and rejection paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$JAVA_HOME" = /opt/kafka-lab/jdk-25.0.5.1
+          java --version
+          bash scripts/wsl/verify-java.sh
