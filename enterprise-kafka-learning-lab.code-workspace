@@ -74,6 +74,34 @@
           "cwd": "${workspaceFolder}"
         },
         "problemMatcher": []
+      },
+      {
+        "label": "WSL: Verify build",
+        "type": "process",
+        "command": "/bin/bash",
+        "args": [
+          "scripts/wsl/lab.sh",
+          "mvn",
+          "verify"
+        ],
+        "windows": {
+          "command": "wsl.exe",
+          "args": [
+            "-d",
+            "Ubuntu",
+            "--cd",
+            "${workspaceFolder}",
+            "--exec",
+            "/bin/bash",
+            "scripts/wsl/lab.sh",
+            "mvn",
+            "verify"
+          ]
+        },
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "problemMatcher": []
       }
     ]
   }
