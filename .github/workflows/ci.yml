@@ -1,0 +1,28 @@
+name: Lab CI
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - 'pom.xml'
+      - '.mvn/**'
+      - 'tools/**'
+      - 'scripts/**'
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: lab-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    name: Verify lab tooling
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Verify runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(uname -m)" = x86_64
+          test "$(. /etc/os-release; printf '%s' "$ID")" = ubuntu
+          printf 'Ubuntu x86_64 runner ready\n'
