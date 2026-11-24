@@ -73,12 +73,30 @@ jobs:
         if: ${{ always() && steps.checkout.outcome == 'success' }}
         shell: bash
         run: python3 scripts/ci/prepare-test-artifacts.py
+      - name: Report CI failure
+        if: ${{ failure() }}
+        shell: bash
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p tools/build-verification/target/ci-reports
+          {
+            printf '# Lab CI failed\n\nRun: %s\n\n' "$RUN_URL"
+            printf 'Revision: `%s`\n\n' "$GITHUB_SHA"
+            printf 'Inspect the first failed step and sanitized test reports.\n'
+            printf 'Reproduce in Ubuntu WSL: `bash scripts/wsl/lab.sh mvn clean verify`.\n'
+            printf 'A setup failure may have no test reports. Never publish credentials or raw payloads.\n'
+          } | tee -a "$GITHUB_STEP_SUMMARY" tools/build-verification/target/ci-reports/failure-summary.md
+          echo '::error title=Lab CI failed::Inspect the first failed step and sanitized test artifacts.'
       - name: Publish test reports
         if: ${{ always() && steps.checkout.outcome == 'success' }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: tooling-test-reports-${{ github.run_id }}-${{ github.run_attempt }}
-          path: tools/build-verification/target/ci-reports/*.xml
+          path: |
+            tools/build-verification/target/ci-reports/*.xml
+            tools/build-verification/target/ci-reports/failure-summary.md
           retention-days: 7
           if-no-files-found: warn
           include-hidden-files: false
