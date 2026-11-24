@@ -4,13 +4,13 @@ A learning-first monorepo for Apache Kafka in KRaft mode, native Java clients, S
 
 ## Current state
 
-P0 planning is complete and merged. P1 repository foundations are in progress. See the [authoritative task CSV](docs/roadmap/Kafka_Learning_Lab_Task_Checklist.csv) for status on this branch; the 15 phase Markdown checklists are the historical plan, not live tracking.
+P0 planning is complete and merged. P1 is complete on this topic branch: repository standards, WSL development tools and passing hosted CI. See the [P1 phase review](docs/testing/evidence/P1-phase-review.md). P2 has not started. See the [authoritative task CSV](docs/roadmap/Kafka_Learning_Lab_Task_Checklist.csv) for status on this branch; the 15 phase Markdown checklists are the historical plan, not live tracking.
 
-**No Java application, broker, Compose stack, database or Kubernetes deployment is implemented.** There is no runnable service, build or CI result to demonstrate yet. The [P0 review](docs/testing/evidence/P0-phase-review.md) distinguishes planning evidence from future runtime verification. The 100,000-user scenario is a workload hypothesis, not a benchmark claim.
+**No Java application, broker, Compose stack, database or Kubernetes deployment is implemented.** A tooling-only Maven module now verifies compiler, unit/integration tests, formatting and static checks locally; it is not a business application. Hosted CI runs the same tooling build and retains sanitized test reports; see the [CI guide](docs/development/continuous-integration.md). See the [quality gate guide](docs/development/quality-gates.md). The [P0 review](docs/testing/evidence/P0-phase-review.md) distinguishes planning evidence from future runtime verification. The 100,000-user scenario is a workload hypothesis, not a benchmark claim.
 
 ## Start learning
 
-Git and a Markdown reader are enough to inspect the current documentation. No JDK, Maven or Docker installation is needed for these repository tasks; installation and verification have their own P1 tasks.
+Git and a Markdown reader are enough to inspect the current documentation. Reading the documentation needs no runtime dependencies. Building the tooling probe uses the verified [WSL environment](docs/development/wsl-setup.md); installation/verification evidence is recorded per P1 task.
 
 ```text
 git clone https://github.com/ru5iru/enterprise-kafka-learning-lab.git

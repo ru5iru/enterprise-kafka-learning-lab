@@ -1,0 +1,103 @@
+name: Lab CI
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - 'pom.xml'
+      - '.mvn/**'
+      - 'tools/**'
+      - 'scripts/**'
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: lab-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    name: Verify lab tooling
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout source
+        id: checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Verify source identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test -f AGENTS.md
+          test -f pom.xml
+          if git config --local --get-regexp 'http.*extraheader' >/dev/null; then
+            echo 'Unexpected persisted HTTP authentication header' >&2
+            exit 1
+          fi
+      - name: Verify runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(uname -m)" = x86_64
+          test "$(. /etc/os-release; printf '%s' "$ID")" = ubuntu
+          printf 'Ubuntu x86_64 runner ready\n'
+      - name: Install pinned JDK
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo bash scripts/wsl/install-jdk.sh
+          printf 'JAVA_HOME=/opt/kafka-lab/jdk-25.0.5.1\n' >> "$GITHUB_ENV"
+          printf '/opt/kafka-lab/jdk-25.0.5.1/bin\n' >> "$GITHUB_PATH"
+      - name: Verify Java compiler and rejection paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$JAVA_HOME" = /opt/kafka-lab/jdk-25.0.5.1
+          java --version
+          bash scripts/wsl/verify-java.sh
+      - name: Install pinned Maven
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo bash scripts/wsl/install-maven.sh
+          bash scripts/wsl/lab.sh mvn --version
+      - name: Verify tooling and tests
+        shell: bash
+        run: bash scripts/wsl/lab.sh mvn clean verify
+      - name: Verify discovered test reports
+        shell: bash
+        run: python3 scripts/ci/verify-test-reports.py
+      - name: Prepare sanitized test artifacts
+        if: ${{ always() && steps.checkout.outcome == 'success' }}
+        shell: bash
+        run: python3 scripts/ci/prepare-test-artifacts.py
+      - name: Report CI failure
+        timeout-minutes: 1
+        if: ${{ failure() }}
+        shell: bash
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p tools/build-verification/target/ci-reports
+          {
+            printf '# Lab CI failed\n\nRun: %s\n\n' "$RUN_URL"
+            printf 'Revision: `%s`\n\n' "$GITHUB_SHA"
+            printf 'Inspect the first failed step and sanitized test reports.\n'
+            printf 'Reproduce in Ubuntu WSL: `bash scripts/wsl/lab.sh mvn clean verify`.\n'
+            printf 'A setup failure may have no test reports. Never publish credentials or raw payloads.\n'
+          } | tee -a "$GITHUB_STEP_SUMMARY" tools/build-verification/target/ci-reports/failure-summary.md
+          echo '::error title=Lab CI failed::Inspect the first failed step and sanitized test artifacts.'
+      - name: Publish test reports
+        if: ${{ always() && steps.checkout.outcome == 'success' }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: tooling-test-reports-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            tools/build-verification/target/ci-reports/*.xml
+            tools/build-verification/target/ci-reports/failure-summary.md
+          retention-days: 7
+          if-no-files-found: warn
+          include-hidden-files: false

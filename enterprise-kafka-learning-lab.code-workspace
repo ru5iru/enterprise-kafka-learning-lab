@@ -1,0 +1,108 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
+    "terminal.integrated.profiles.windows": {
+      "Ubuntu (WSL)": {
+        "path": "${env:WINDIR}\\System32\\wsl.exe",
+        "args": [
+          "-d",
+          "Ubuntu"
+        ]
+      }
+    }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "WSL: Java version",
+        "type": "process",
+        "command": "/bin/bash",
+        "args": [
+          "scripts/wsl/lab.sh",
+          "java",
+          "--version"
+        ],
+        "windows": {
+          "command": "wsl.exe",
+          "args": [
+            "-d",
+            "Ubuntu",
+            "--cd",
+            "${workspaceFolder}",
+            "--exec",
+            "/bin/bash",
+            "scripts/wsl/lab.sh",
+            "java",
+            "--version"
+          ]
+        },
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "WSL: Maven version",
+        "type": "process",
+        "command": "/bin/bash",
+        "args": [
+          "scripts/wsl/lab.sh",
+          "mvn",
+          "--version"
+        ],
+        "windows": {
+          "command": "wsl.exe",
+          "args": [
+            "-d",
+            "Ubuntu",
+            "--cd",
+            "${workspaceFolder}",
+            "--exec",
+            "/bin/bash",
+            "scripts/wsl/lab.sh",
+            "mvn",
+            "--version"
+          ]
+        },
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "WSL: Verify build",
+        "type": "process",
+        "command": "/bin/bash",
+        "args": [
+          "scripts/wsl/lab.sh",
+          "mvn",
+          "verify"
+        ],
+        "windows": {
+          "command": "wsl.exe",
+          "args": [
+            "-d",
+            "Ubuntu",
+            "--cd",
+            "${workspaceFolder}",
+            "--exec",
+            "/bin/bash",
+            "scripts/wsl/lab.sh",
+            "mvn",
+            "verify"
+          ]
+        },
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+}

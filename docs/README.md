@@ -1,6 +1,6 @@
 # Documentation index
 
-P0 planning is complete. Repository foundation tasks have task-specific P1 learning and evidence records; consult the [CSV](roadmap/Kafka_Learning_Lab_Task_Checklist.csv) for exact status on this branch. No application or infrastructure runtime is implemented. Planning artifacts, operational procedures and executed experiments are distinct kinds of documentation.
+P0 planning is complete. Repository foundation tasks have task-specific P1 learning and evidence records; consult the [CSV](roadmap/Kafka_Learning_Lab_Task_Checklist.csv) for exact status on this branch. No application, broker, database server or deployment stack is implemented; WSL development tools and a tooling-only build now exist. Planning artifacts, operational procedures and executed experiments are distinct kinds of documentation.
 
 ## Navigate by purpose
 
@@ -11,13 +11,14 @@ P0 planning is complete. Repository foundation tasks have task-specific P1 learn
 | Architecture | [Target diagrams and decision index](architecture/README.md); source blueprint stays in roadmap |
 | Kafka | [Kafka learning navigation](kafka/README.md); experiment records appear only when executed |
 | Security | [Security navigation](security/README.md), policy, trust boundaries and open STRIDE risks |
+| Development and CI | [WSL setup](development/wsl-setup.md), [quality gates](development/quality-gates.md), [review checklist](development/review-checklist.md), [hosted CI](development/continuous-integration.md) |
 | Git/editor | [Contribution/review rules](git/CONTRIBUTION_WORKFLOW.md), [repository baseline](git/repository-baseline.md), [editor settings](git/editor-settings.md) |
 | Agent protocol | [Task workflow](agent/TASK_EXECUTION_WORKFLOW.md), [Definition of Done](agent/DEFINITION_OF_DONE.md), [handoff](agent/HANDOFF_TEMPLATE.md) |
 | Testing | [Verification guidance and evidence](testing/README.md); distinguish review from runtime tests |
 | Operations | [Runbook scope](operations/README.md); no tested runtime procedures yet |
-| Learning | [Journal rules/template](learning-notes/README.md), [P0 review/index](testing/evidence/P0-phase-review.md), [P1-001 through P1-012 journal](learning-notes/P1/README.md) |
+| Learning | [Journal rules/template](learning-notes/README.md), [P0 review/index](testing/evidence/P0-phase-review.md), [P1 journal](learning-notes/P1/README.md) |
 
-Start at the [root README](../README.md) for onboarding or [CONTRIBUTING.md](../CONTRIBUTING.md) before proposing changes. The [P1 foundation review/index](testing/evidence/P1-001-012-review.md) links this authorized sequence; it is not a P1 phase-gate completion claim.
+Start at the [root README](../README.md) for onboarding or [CONTRIBUTING.md](../CONTRIBUTING.md) before proposing changes. The [P1 phase review/index](testing/evidence/P1-phase-review.md) records all 43 completed tasks and actual WSL/CI evidence; the [first foundation review](testing/evidence/P1-001-012-review.md) remains a historical partial review.
 
 ## Where new material belongs
 

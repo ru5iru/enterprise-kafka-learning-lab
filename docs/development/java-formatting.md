@@ -1,0 +1,7 @@
+# Java formatting
+
+Use Google Java Format **2.0.0**, AOSP mode (four-space indentation, consistent with EditorConfig). The current release was observed in publisher Maven metadata; the exact v2.0.0 README was reviewed. Its runtime minimum is Java 21, and the installed Java 25 CLI was actually exercised. This does not certify every future Java syntax feature or plugin integration.
+
+Run `bash scripts/wsl/install-formatter.sh` as WSL root for the publisher-SHA-256-pinned standalone JAR, then `bash scripts/wsl/format-java.sh --check file.java` or explicitly `--write file.java` as the normal user. Check mode reports drift without writing; write mode changes only explicit existing .java paths. Absolute path conversion prevents leading @/option-like names being interpreted as formatter arguments. No editor extension/format-on-save or automatic repository-wide rewrite is enabled.
+
+Verification used synthetic Linux temporary files: drift failed, explicit write succeeded with four-space indentation, a second write was byte-identical, clean check passed and malformed source failed. See [evidence](../testing/evidence/P1-023-review.md). Default formatter import/comment processing also deserves diff review; formatting success is not program correctness. Build integration is P1-035. Rollback by reviewed source/config correction; avoid mass-reformatting prior roadmap/evidence or deleting unrelated tool installations.
