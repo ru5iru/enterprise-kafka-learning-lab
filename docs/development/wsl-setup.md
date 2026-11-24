@@ -2,7 +2,7 @@
 
 Develop in the current checkout and execute the lab in Ubuntu WSL, per [ADR-0011](../architecture/decisions/0011-wsl-development-runtime.md). Keep one active working tree. No application or broker is created by these setup instructions.
 
-## JDK installation â€” P1-013
+## JDK installation — P1-013
 
 The target is Ubuntu 24.04 x86_64 under WSL 2. Oracle's download page was checked on 2026-11-24: JDK 25.0.5.1. The Linux archive SHA-256 is pinned in [install-jdk.sh](../../scripts/wsl/install-jdk.sh); TLS and checksum verification must succeed before extraction. Existing installation checks are idempotent. No PATH/JAVA_HOME or Windows settings are changed by that installer.
 
@@ -25,3 +25,11 @@ wsl -d Ubuntu --exec /bin/bash /mnt/c/Users/rusiru.r/Desktop/Projects/enterprise
 ```
 
 Inside WSL, `bash scripts/wsl/lab.sh <command> [arguments...]` selects the Linux JDK, filters inherited Windows PATH entries and runs from repository root. To configure an interactive shell explicitly, source `scripts/wsl/environment.sh`. `LAB_JAVA_HOME` can select another complete Linux JDK only after a reviewed version change; an absent/incomplete path is rejected. The launcher passes arguments directly without eval, supports paths containing spaces, and returns the command's exit code. It does not persist global JAVA_HOME, change Windows settings or modify login files. Rollback: stop sourcing/using this launcher; existing shells are unchanged unless they explicitly sourced it.
+
+## Maven installation — P1-016
+
+Maven 3.10.2 is installed in `/opt/kafka-lab/apache-maven-3.10.2`; the launcher selects it before inherited Windows executables. Run `bash scripts/wsl/lab.sh mvn --version` in WSL. [install-maven.sh](../../scripts/wsl/install-maven.sh) verifies a pinned Apache SHA-512 before extraction and can consume one local archive acquired through verified TLS.
+
+The WSL Apache download failed certificate validation during setup. A Windows `curl.exe --fail --location` download succeeded with normal certificate validation; its archive was passed to the Linux installer and hash-checked there. No insecure TLS flag or new trust root was used. To reproduce that fallback, download the named 3.10.2 archive from the official URL in the installer to a temporary Windows file, translate its path with `wslpath -u`, then run the installer as WSL root with that path. The download location does not change where Maven is installed/executed. Publisher checksums are integrity evidence, not an independent signature audit. Dependency resolution is verified separately in P1-017.
+
+No Windows Maven or global alternatives were changed. Rollback means retire only this versioned Linux Maven after checking consumers and correct the project launcher; do not remove the existing Windows toolchain or alter TLS verification to work around download errors.

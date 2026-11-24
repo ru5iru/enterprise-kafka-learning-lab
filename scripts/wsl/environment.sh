@@ -5,3 +5,5 @@ if [[ ! -x "$JAVA_HOME/bin/java" || ! -x "$JAVA_HOME/bin/javac" ]]; then
   return 1
 fi
 export PATH="$JAVA_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export MAVEN_HOME='/opt/kafka-lab/apache-maven-3.10.2'
+export PATH="$MAVEN_HOME/bin:$PATH"
