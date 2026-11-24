@@ -1,1 +1,5 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
+contact_links:
+  - name: Security reporting policy
+    url: https://github.com/ru5iru/enterprise-kafka-learning-lab/security/policy
+    about: Follow the security policy; do not post sensitive findings in public issues.
