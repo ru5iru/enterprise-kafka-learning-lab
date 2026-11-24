@@ -119,6 +119,37 @@ Before committing, inspect the staged diff and intended message. Correct an unpu
 7. Complete PR template with why, what, tests, learning, risks and docs.
 8. Merge only after review/acceptance. Do not claim a task is Done until its acceptance criteria hold.
 
+## PR review rules (P1-007)
+
+### Responsibilities and evidence
+
+The author identifies the exact task/dependency, base/head commits, changes, rationale, verification commands/results, learning note, evidence, CSV update and rollback. Use the [PR template](../../.github/pull_request_template.md). Link an ADR when a meaningful architecture/security decision changes, and explain remaining unknowns. A task's phase-wide deliverable does not authorize implementing later tasks.
+
+A reviewer compares the actual diff with task acceptance and the current design, checks relevant positive/negative evidence and sanitized content, and records blocking findings separately from suggestions. Inspect the final reviewed head again after substantive new commits or conflict resolution. A clean diff alone does not establish functional acceptance.
+
+For this single-owner learning lab, an explicitly documented author/agent self-review is acceptable for a scoped change; disclose that no independent review occurred. It is not an independent approval or a fabricated GitHub review. Request human input when an unresolved decision conflicts with agreed requirements. Merge/push authorization follows the user's instructions; do not invent an extra approval step for already authorized routine work.
+
+### Review outcomes and merge conditions
+
+| Situation | Required outcome |
+|---|---|
+| Scoped documentation, dependency Done, evidence complete, no blockers | Record self/peer review; merge only when authorized |
+| Dependency Not Started or Blocked | Stop dependent execution; do not mark it Done to clear the dependency |
+| Applicable verification failed or implementation evidence missing | Request changes; fix and recheck before merge |
+| Documentation-only change with no configured CI | Record actual CLI/self-review and CI not configured; do not claim green CI |
+| Suspected credential or sensitive payload in diff/log | Stop publication, remove/redact and assess revocation/rotation if exposed; use private reporting |
+| New substantive commits after review | Review the changed final head and rerun affected checks |
+
+Before merging, resolve blocking findings and conflicts, verify the intended head/base and applicable checks, and retain honest limitations. Do not bypass required checks or protection. Main protection was observed absent in [P1-001](repository-baseline.md); this document does not enable it. CI setup is scheduled for P1-037 onward. A policy is not server-side enforcement.
+
+Use a merge commit when preserving published task hashes/evidence references matters, especially for an authorized stacked sequence. Squashing can suit an isolated branch if the final commit retains the task reference and evidence remains meaningful. Do not rebase shared history, force-push, silently include unrelated tasks, or delete branches without scope/authorization. State a stacked PR's parent base; review its individual task against that base and the full package against main before consolidation.
+
+### Recheck and recovery
+
+A failed check must be investigated, not relabeled passed. Record commands and observed failure/correction, then rerun the affected checks. For documentation tasks, explain why runtime tests are not applicable. Reverting a merged change is a new reviewed commit with task traceability; inspect dependent task effects and correct the CSV truthfully. Do not reset main or edit historical evidence to erase a failure.
+
+References: [PR reviews](https://docs.github.com/en/pull-requests/reference/pull-request-reviews), [protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches), [Definition of Done](../agent/DEFINITION_OF_DONE.md).
+
 ## Versioning and history
 
 - Prefer small, reversible commits; do not rewrite shared history.
