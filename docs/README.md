@@ -1,6 +1,6 @@
 # Documentation index
 
-P0 planning is complete. Repository foundation tasks have task-specific P1 learning and evidence records; consult the [CSV](roadmap/Kafka_Learning_Lab_Task_Checklist.csv) for exact status on this branch. No application or infrastructure runtime is implemented. Planning artifacts, operational procedures and executed experiments are distinct kinds of documentation.
+P0 planning is complete. Repository foundation tasks have task-specific P1 learning and evidence records; consult the [CSV](roadmap/Kafka_Learning_Lab_Task_Checklist.csv) for exact status on this branch. No application, broker, database server or deployment stack is implemented; WSL development tools and a tooling-only build now exist. Planning artifacts, operational procedures and executed experiments are distinct kinds of documentation.
 
 ## Navigate by purpose
 
@@ -11,6 +11,7 @@ P0 planning is complete. Repository foundation tasks have task-specific P1 learn
 | Architecture | [Target diagrams and decision index](architecture/README.md); source blueprint stays in roadmap |
 | Kafka | [Kafka learning navigation](kafka/README.md); experiment records appear only when executed |
 | Security | [Security navigation](security/README.md), policy, trust boundaries and open STRIDE risks |
+| Development and CI | [WSL setup](development/wsl-setup.md), [quality gates](development/quality-gates.md), [review checklist](development/review-checklist.md), [hosted CI](development/continuous-integration.md) |
 | Git/editor | [Contribution/review rules](git/CONTRIBUTION_WORKFLOW.md), [repository baseline](git/repository-baseline.md), [editor settings](git/editor-settings.md) |
 | Agent protocol | [Task workflow](agent/TASK_EXECUTION_WORKFLOW.md), [Definition of Done](agent/DEFINITION_OF_DONE.md), [handoff](agent/HANDOFF_TEMPLATE.md) |
 | Testing | [Verification guidance and evidence](testing/README.md); distinguish review from runtime tests |

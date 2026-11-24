@@ -74,6 +74,7 @@ jobs:
         shell: bash
         run: python3 scripts/ci/prepare-test-artifacts.py
       - name: Report CI failure
+        timeout-minutes: 1
         if: ${{ failure() }}
         shell: bash
         env:

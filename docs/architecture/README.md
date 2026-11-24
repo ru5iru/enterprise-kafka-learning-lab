@@ -20,5 +20,9 @@ Use the [ADR process](decisions/README.md) and [template](decisions/0000-templat
 8. [Kubernetes](decisions/0008-kubernetes.md).
 9. [Progressive security](decisions/0009-progressive-security.md).
 10. [Observability](decisions/0010-observability.md).
+11. [Windows checkout and WSL runtime](decisions/0011-wsl-development-runtime.md).
+12. [WSL container runtime](decisions/0012-wsl-container-runtime.md).
+13. [Tooling-only build verification](decisions/0013-p1-build-verification.md).
+14. [CI trust and evidence](decisions/0014-ci-trust-and-evidence.md).
 
-Version choices have dated sources and compatibility limits; installing/testing them remains scheduled work. Update affected diagrams and task learning notes when behavior changes; do not silently rewrite the original roadmap. Return to [documentation index](../README.md).
+Version choices have dated sources and compatibility limits. P1 installs/verifies the WSL development tools and CI tooling module; Kafka broker/application/database deployment remains future work. Update affected diagrams and task learning notes when behavior changes; do not silently rewrite the original roadmap. Return to [documentation index](../README.md).
