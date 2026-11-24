@@ -10,3 +10,4 @@ These are task-specific concept reviews and isolated WSL experiments. The CSV de
 | P2-004 | [Dependency inversion](P2-004.md) | [Evidence](../../testing/evidence/P2-004-review.md) |
 | P2-005 | [Collections and generics](P2-005.md) | [Evidence](../../testing/evidence/P2-005-review.md) |
 | P2-006 | [Streams and lambdas](P2-006.md) | [Evidence](../../testing/evidence/P2-006-review.md) |
+| P2-007 | [Records and immutability](P2-007.md) | [Evidence](../../testing/evidence/P2-007-review.md) |
