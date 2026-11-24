@@ -14,3 +14,4 @@ These are task-specific concept reviews and isolated WSL experiments. The CSV de
 | P2-008 | [Checked and unchecked exceptions](P2-008.md) | [Evidence](../../testing/evidence/P2-008-review.md) |
 | P2-009 | [Java concurrency](P2-009.md) | [Evidence](../../testing/evidence/P2-009-review.md) |
 | P2-010 | [Thread pools](P2-010.md) | [Evidence](../../testing/evidence/P2-010-review.md) |
+| P2-011 | [CompletableFuture](P2-011.md) | [Evidence](../../testing/evidence/P2-011-review.md) |
