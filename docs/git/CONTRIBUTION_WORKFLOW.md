@@ -9,6 +9,28 @@ Use **GitHub Flow**, appropriate for one-person/agent-supported incremental lear
 - Do not push directly to protected `main`; never force-push others' work.
 - Agent must not automatically create commits/push/merge unless authorized by the user.
 
+## Branch naming (P1-005)
+
+Use `<type>/<TASK-ID>-<short-kebab-description>`. The type is one of `feat`, `fix`, `docs`, `test`, `refactor`, `perf`, `build`, `ci`, `chore`, `revert`. Preserve the uppercase task ID exactly as it appears in the CSV; use lowercase ASCII letters/digits separated by single hyphens for the description. Use a concrete action/topic, not a person, ticket URL, secret, customer identifier or generic `work` name.
+
+| Example | Review result |
+|---|---|
+| `docs/P1-005-branch-naming` | Accept: exact task, descriptive lowercase suffix |
+| `chore/P1-003-gitignore` | Accept: repository configuration |
+| `test/P6-017-consumer-crash` | Accept: experiment verification |
+| `feature/P1-005-branch-naming` | Reject: unsupported type alias |
+| `docs/p1-005-branch-naming` | Reject: task ID case changed |
+| `docs/P1-005-Branch_Naming` | Reject: suffix is not lowercase kebab case |
+| `docs/P1-999-branch-naming` | Reject: task ID does not exist in the ledger |
+
+The repository policy is stricter than Git's ref syntax. `git check-ref-format --branch docs/P1-005-branch-naming` checks Git syntax; separately check type, task existence and scope against the CSV. No hook or CI naming enforcement is installed by this documentation task.
+
+Start normal work from current main. For an explicitly authorized sequence whose preceding task is published but unmerged, a new task branch may be stacked on that predecessor: first verify its clean tree and remote tip, then create the next branch. State the parent/base in the handoff or PR and review the task diff against that parent. Do not rebase published branches or merge the sequence automatically. See the [P1 repository baseline](repository-baseline.md) for the currently authorized sequence.
+
+Do not rename historical published branches solely to apply this policy. For an unpublished naming mistake, create a correctly named branch at the intended commit after checking the tree; retain anything needed for recovery. For a published mistake, coordinate a non-destructive correction without force-pushing or deleting someone else's work.
+
+References: [Git ref syntax](https://git-scm.com/docs/git-check-ref-format), [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow).
+
 ## Conventional Commits
 
 Format:
