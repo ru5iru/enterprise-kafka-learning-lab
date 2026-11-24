@@ -71,6 +71,43 @@ Record expected TLS failure and redacted evidence.
 Refs: P9-033
 ```
 
+### Semantics and local requirements (P1-006)
+
+Use [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/). `feat` introduces a capability; `fix` corrects a defect. Use `docs` for learning/policy documents, `test` for verification behavior, `chore` for repository maintenance, and `build`/`ci` for build/pipeline changes. A task being completed does not make a documentation change a feature. Scope is optional in the specification; when used here, keep it short, lowercase and concrete.
+
+Our local review requires a present-tense imperative description and `Refs: P#-###` for the exact task from the CSV. A body is optional; use it for motivation and consequential trade-offs, separated by a blank line. Keep secrets, private URLs and personal payloads out of subject/body/footer because history is shared. The roughly 72-character subject preference is local guidance, not a limit imposed by the specification.
+
+`!` after type/scope or a `BREAKING CHANGE: ...` footer declares a real incompatible contract change. Explain what breaks and the migration path; do not label ordinary planning progress as breaking. No automated version bump, changelog generator or commitlint hook is installed. The specification's versioning semantics are not a claim this lab has released versioned software.
+
+Examples for review (synthetic messages, not claims of implemented features):
+
+```text
+docs(git): define conventional commit semantics
+
+Explain task traceability without enabling release automation.
+
+Refs: P1-006
+```
+
+```text
+feat(kafka)!: require explicit event schema version
+
+BREAKING CHANGE: consumers must read the new schema version field; migrate
+consumers before replaying records using the new contract.
+Refs: P7-001
+```
+
+```text
+revert(git): revert branch policy clarification
+
+Reverts: <full-commit-sha>
+Refs: P1-005
+```
+
+Reject `Update stuff` (no structured type), `docs(git): ` (empty description), and an otherwise valid `docs(git): clarify policy` without a task footer (missing local traceability). Do not invent an issue number or use closing keywords unless an actual issue is intended to close.
+
+Before committing, inspect the staged diff and intended message. Correct an unpublished message only when authorized and safe; after publication prefer a normal follow-up/revert with an explanation. Do not amend/rebase/force-push shared history merely for cosmetic message consistency. Merge commits may retain the hosting platform's merge metadata; keep task commits traceable and use a Conventional Commit merge title when preparing it deliberately.
+
 ## Commit and PR checklist
 
 1. Start from an up-to-date `main` and use a new topic branch.
