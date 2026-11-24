@@ -14,3 +14,5 @@ Do not pre-create 726 empty notes. Create each one only while carrying out the c
 - [P1 complete learning index](P1/README.md).
 
 These links route to actual records; use the CSV for current status and distinguish objectives from attained proficiency.
+
+- [P2 Java concept reviews through P2-013](P2/README.md); partial sequence, no P2 application phase gate claimed.

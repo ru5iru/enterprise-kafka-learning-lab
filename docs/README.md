@@ -16,6 +16,7 @@ P0 planning is complete. Repository foundation tasks have task-specific P1 learn
 | Agent protocol | [Task workflow](agent/TASK_EXECUTION_WORKFLOW.md), [Definition of Done](agent/DEFINITION_OF_DONE.md), [handoff](agent/HANDOFF_TEMPLATE.md) |
 | Testing | [Verification guidance and evidence](testing/README.md); distinguish review from runtime tests |
 | Operations | [Runbook scope](operations/README.md); no tested runtime procedures yet |
+| Java foundations | [P2 reviews through P2-013](learning-notes/P2/README.md), [reproduction guide](development/java-foundations-review.md); application creation remains P2-014 |
 | Learning | [Journal rules/template](learning-notes/README.md), [P0 review/index](testing/evidence/P0-phase-review.md), [P1 journal](learning-notes/P1/README.md) |
 
 Start at the [root README](../README.md) for onboarding or [CONTRIBUTING.md](../CONTRIBUTING.md) before proposing changes. The [P1 phase review/index](testing/evidence/P1-phase-review.md) records all 43 completed tasks and actual WSL/CI evidence; the [first foundation review](testing/evidence/P1-001-012-review.md) remains a historical partial review.
