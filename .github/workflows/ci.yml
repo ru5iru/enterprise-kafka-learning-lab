@@ -65,7 +65,7 @@ jobs:
           bash scripts/wsl/lab.sh mvn --version
       - name: Verify tooling and tests
         shell: bash
-        run: bash scripts/wsl/lab.sh mvn clean verify
+        run: bash scripts/wsl/lab.sh mvn -Dprobe.expectedJava=99 clean verify
       - name: Verify discovered test reports
         shell: bash
         run: python3 scripts/ci/verify-test-reports.py
