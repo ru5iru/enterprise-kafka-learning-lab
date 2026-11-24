@@ -5,3 +5,4 @@ These are task-specific concept reviews and isolated WSL experiments. The CSV de
 | Task | Review | Verification |
 |---|---|---|
 | P2-001 | [Java project structure](P2-001.md) | [Evidence](../../testing/evidence/P2-001-review.md) |
+| P2-002 | [Maven dependency scopes](P2-002.md) | [Evidence](../../testing/evidence/P2-002-review.md) |
