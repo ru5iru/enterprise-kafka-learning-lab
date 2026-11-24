@@ -8,3 +8,4 @@ These are task-specific concept reviews and isolated WSL experiments. The CSV de
 | P2-002 | [Maven dependency scopes](P2-002.md) | [Evidence](../../testing/evidence/P2-002-review.md) |
 | P2-003 | [Interfaces and abstractions](P2-003.md) | [Evidence](../../testing/evidence/P2-003-review.md) |
 | P2-004 | [Dependency inversion](P2-004.md) | [Evidence](../../testing/evidence/P2-004-review.md) |
+| P2-005 | [Collections and generics](P2-005.md) | [Evidence](../../testing/evidence/P2-005-review.md) |
