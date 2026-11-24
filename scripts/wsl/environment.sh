@@ -7,3 +7,5 @@ fi
 export PATH="$JAVA_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export MAVEN_HOME='/opt/kafka-lab/apache-maven-3.10.2'
 export PATH="$MAVEN_HOME/bin:$PATH"
+export KAFKA_HOME='/opt/kafka-lab/kafka_2.13-4.4.0'
+export PATH="$KAFKA_HOME/bin:$PATH"
