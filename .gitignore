@@ -1,3 +1,5 @@
+# Ignore rules are hygiene, not secret detection: tracked files remain tracked.
+# Review staged diffs; never use force-add to publish credentials.
 # OS, editors and local env
 .DS_Store
 Thumbs.db
@@ -8,6 +10,8 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+!.env.*.example
+# Example names are allowed only for sanitized, non-secret placeholders.
 
 # Java / Maven / Gradle
 target/
@@ -22,6 +26,8 @@ __pycache__/
 .venv/
 
 # Credentials and PKI secrets
+# PEM/ASC may also contain public material; deliberately exclude until reviewed.
+# Add a narrow exception only for an approved, non-secret fixture in a later task.
 *.key
 *.pem
 *.p12
@@ -49,3 +55,9 @@ kubeconfig
 *.bak
 coverage/
 reports/generated/
+
+# Local lab state and database exports (SQL migrations remain visible)
+.local/
+/runtime/
+*.dump
+*.sql.gz

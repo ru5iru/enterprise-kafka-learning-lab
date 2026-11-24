@@ -1,3 +1,4 @@
+# Repository defaults; no parent editor settings should leak into this project.
 root = true
 
 [*]
@@ -8,8 +9,9 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 2
 
+# Prefer paragraphs/lists over trailing-space Markdown hard breaks in new work.
 [*.md]
-trim_trailing_whitespace = false
+trim_trailing_whitespace = true
 
 [*.java]
 indent_size = 4
@@ -17,5 +19,11 @@ indent_size = 4
 [*.{xml,pom}]
 indent_size = 2
 
+# Preserve the inherited CSV working-copy layout and significant cell spaces.
 [*.csv]
+end_of_line = crlf
 trim_trailing_whitespace = false
+
+# Windows command scripts are the explicit line-ending exception.
+[*.{bat,cmd}]
+end_of_line = crlf

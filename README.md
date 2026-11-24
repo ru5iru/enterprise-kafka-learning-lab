@@ -1,67 +1,51 @@
 # Enterprise Kafka Learning Lab
 
-> **Repository state: planning scaffold only — no application or infrastructure has been implemented.**
+A learning-first monorepo for Apache Kafka in KRaft mode, native Java clients, Spring Boot/Spring Kafka, PostgreSQL and enterprise engineering. Simple simulated commerce provides experiments; learning Kafka is the product.
 
-An incremental learning lab for Apache Kafka (KRaft), native Java Kafka clients, Spring Boot/Spring Kafka, PostgreSQL, progressive TLS/mTLS/SASL/ACL security, observability, resiliency, and eventual Kubernetes deployment. The simulated commerce domain is intentionally simple. The target **100,000-user scenario** is a *capacity-planning hypothesis*, not a benchmark claim.
+## Current state
 
-## Start here
+P0 planning is complete and merged. P1 repository foundations are in progress. See the [authoritative task CSV](docs/roadmap/Kafka_Learning_Lab_Task_Checklist.csv) for status on this branch; the 15 phase Markdown checklists are the historical plan, not live tracking.
 
-1. Read [AGENTS.md](AGENTS.md) and [SKILL.md](SKILL.md) before assigning work to a coding agent.
-2. Read the [master roadmap](docs/roadmap/ROADMAP.md), [system architecture](docs/roadmap/ARCHITECTURE.md), and [SSDLC handbook](docs/roadmap/SSDLC_AND_VERIFICATION.md).
-3. Open [the CSV task ledger](docs/roadmap/Kafka_Learning_Lab_Task_Checklist.csv) — **726 tasks across 15 phases**; initial status is `Not Started`.
-4. Begin with **P0-001**. Execute **one task per agent invocation** by default. No infrastructure or application code should be added before its scheduled task.
-5. For each completed task, create `docs/learning-notes/P0/P0-001.md` (or its matching ID), including what was learned, decisions, trade-offs, best practices, security pitfalls, failure cases, verification evidence, and next steps.
-6. Follow [task execution workflow](docs/agent/TASK_EXECUTION_WORKFLOW.md) and [Git conventions](docs/git/CONTRIBUTION_WORKFLOW.md).
+**No Java application, broker, Compose stack, database or Kubernetes deployment is implemented.** There is no runnable service, build or CI result to demonstrate yet. The [P0 review](docs/testing/evidence/P0-phase-review.md) distinguishes planning evidence from future runtime verification. The 100,000-user scenario is a workload hypothesis, not a benchmark claim.
 
-## Source of truth
+## Start learning
 
-| Concern | Source |
-|---|---|
-| Scope and tasks | `docs/roadmap/` and the task CSV |
-| Task completion status | CSV `Status` column only; phase Markdown checkboxes are a static roadmap |
-| Agent behavior | `AGENTS.md` + `.agents/skills/kafka-task-execution/SKILL.md` |
-| Task-level educational record | `docs/learning-notes/<phase>/<task-id>.md` |
-| Architecture decisions | `docs/architecture/decisions/` (ADRs, when a decision is actually made) |
-| Verification evidence | `docs/testing/evidence/` (sanitized, small artifacts only) |
-
-## Agreed decisions
-
-- Monorepo; independently deployable Maven Java/Spring Boot services introduced progressively.
-- Apache Kafka in KRaft mode; learn the native client first, then Spring Kafka.
-- Docker Compose local first; Kubernetes and Helm later.
-- PostgreSQL when persistence / Outbox / CDC work begins.
-- Progressive security with explicit trust boundaries from the outset.
-- Small, verified steps with SSDLC practice and learning documentation for **every** task.
-
-## Repository layout
+Git and a Markdown reader are enough to inspect the current documentation. No JDK, Maven or Docker installation is needed for these repository tasks; installation and verification have their own P1 tasks.
 
 ```text
-.
-├── AGENTS.md                         # Mandatory agent rules
-├── SKILL.md                          # Shortcut to the detailed skill
-├── .agents/skills/kafka-task-execution/SKILL.md
-├── docs/
-│   ├── roadmap/                     # Original plan, diagrams, 15 phases, CSV
-│   ├── agent/                       # Agent task protocol and hand-off
-│   ├── git/                         # Branching and conventional commits
-│   ├── architecture/decisions/      # ADR template and future ADRs
-│   ├── learning-notes/              # One document per completed task
-│   ├── requirements/                # Planned requirements artifacts
-│   ├── security/                    # Threat-model and security templates
-│   ├── testing/                     # Verification templates and evidence
-│   └── operations/                  # Planned runbooks
-├── .github/                          # PR and issue templates
-└── .editorconfig, .gitattributes, .gitignore
+git clone https://github.com/ru5iru/enterprise-kafka-learning-lab.git
+cd enterprise-kafka-learning-lab
 ```
 
-The `applications/`, `infrastructure/`, `shared/`, `testing/`, `scripts/`, and `tools/` directories described in the [target architecture](docs/roadmap/ARCHITECTURE.md) are **not created yet**. Introduce them during their assigned tasks; do not mistake roadmap diagrams for deployed components.
+1. Read [AGENTS.md](AGENTS.md) and the [task execution skill](.agents/skills/kafka-task-execution/SKILL.md) before changing files.
+2. Review the [charter](docs/requirements/project-charter.md), [learning objectives](docs/requirements/learning-objectives.md) and [scope](docs/requirements/scope-boundaries.md).
+3. Select the authorized task from the [roadmap](docs/roadmap/ROADMAP.md) and CSV, then check its dependencies and [Definition of Done](docs/agent/DEFINITION_OF_DONE.md).
+4. Study, make one scoped change, verify positive/negative cases where applicable, record a [learning note](docs/learning-notes/TEMPLATE.md) and sanitized evidence, then update only that task's tracking fields.
+5. Follow [contribution instructions](CONTRIBUTING.md) and [Git conventions](docs/git/CONTRIBUTION_WORKFLOW.md). Agents commit, push or merge only with authorization. A multi-task request is executed sequentially, not by bulk-marking tasks Done.
 
-## Task command to give a coding agent
+## Learning path and decisions
 
-> Execute **P0-001** only. Follow `AGENTS.md` and `.agents/skills/kafka-task-execution/SKILL.md`. Read the matching CSV row and phase document. Implement only that task, produce its learning note and evidence, update the CSV accurately, then summarize changes and propose a Conventional Commit. Do not start the next task.
+Learn native Kafka clients before Spring Kafka. Begin with one broker/topic/producer/consumer in P3; introduce services in P4, internals and reliability in P5/P6, contracts and persistence in P7/P8, security and observability in P9/P10, and measured scale, recovery, Kubernetes and delivery in P11-P14.
 
-## Key references
+The [target architecture](docs/architecture/target-architecture.md) uses parallel Payment and Inventory consumers of OrderCreated, as recorded in [ADR-0001](docs/architecture/decisions/0001-parallel-payment-inventory.md). These are planned components. [ADR-0002](docs/architecture/decisions/0002-monorepo.md) retains independent service builds in one repository. [Version decisions](docs/architecture/decisions/) record dated choices and future compatibility checks; reading them does not install the tools.
 
-[Documentation index](docs/README.md) · [Contributing](CONTRIBUTING.md) · [Security policy](SECURITY.md) · [Learning-note template](docs/learning-notes/TEMPLATE.md) · [ADR template](docs/architecture/decisions/0000-template.md)
+## Find the documentation
 
-**No claims of completed tasks, test results, or security controls are made by this scaffold.**
+| Need | Location |
+|---|---|
+| Roadmap, 15 phases, 726 stable tasks | [docs/roadmap](docs/roadmap/ROADMAP.md) |
+| Requirements and workload assumptions | [docs/requirements](docs/requirements/README.md) |
+| Diagrams and architecture decisions | [docs/architecture](docs/architecture/README.md) |
+| Per-task learning and verification | [Learning notes](docs/learning-notes/README.md), [evidence](docs/testing/evidence/README.md) |
+| Agent workflow and completion rules | [docs/agent](docs/agent/TASK_EXECUTION_WORKFLOW.md) |
+| Git and verified repository settings | [Workflow](docs/git/CONTRIBUTION_WORKFLOW.md), [baseline](docs/git/repository-baseline.md) |
+| Security and SSDLC | [Security policy](SECURITY.md), [baseline](docs/security/SECURITY_BASELINE.md), [handbook](docs/roadmap/SSDLC_AND_VERIFICATION.md) |
+| Full navigation | [Documentation index](docs/README.md) |
+
+Application and infrastructure directories in the [source blueprint](docs/roadmap/ARCHITECTURE.md) are future structure. Create them only during assigned tasks, not merely to resemble the diagram.
+
+## Safety and help
+
+Use synthetic data only. Never commit credentials or private keys, and never expose an intentionally unsecured lab to untrusted networks. TLS/mTLS, SASL/ACLs, scanning and recovery remain progressive learning work, not implemented guarantees.
+
+For roadmap questions or sanitized defects, use the repository [issue templates](.github/ISSUE_TEMPLATE/task.md). For a suspected vulnerability, follow [SECURITY.md](SECURITY.md) and avoid public exploit details. The repository owner maintains this learning project; no response-time or production-support commitment is implied.
