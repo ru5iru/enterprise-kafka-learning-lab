@@ -11,6 +11,6 @@ Do not pre-create 726 empty notes. Create each one only while carrying out the c
 ## Completed-work navigation
 
 - [P0 planning review and 45-task index](../testing/evidence/P0-phase-review.md).
-- [P1-001 through P1-012 learning index](P1/README.md).
+- [P1 complete learning index](P1/README.md).
 
 These links route to actual records; use the CSV for current status and distinguish objectives from attained proficiency.

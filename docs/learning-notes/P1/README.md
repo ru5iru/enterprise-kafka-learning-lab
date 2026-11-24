@@ -1,18 +1,47 @@
-# P1 repository-foundation learning journal
+# P1 learning journal
 
-Canonical records for the authorized P1-001 through P1-012 sequence. The CSV determines status; this index does not complete the full P1 phase. See [foundation review](../../testing/evidence/P1-001-012-review.md).
+All 43 canonical task records are complete on this branch. Consult the CSV for authoritative status and the [phase review](../../testing/evidence/P1-phase-review.md) for executed WSL/CI evidence and residual limits. The [first 12-task review](../../testing/evidence/P1-001-012-review.md) remains historical. No P2 work was executed.
 
-- [P1-001 learning](P1-001.md) · [verification](../../testing/evidence/P1-001-review.md).
-- [P1-002 learning](P1-002.md) · [verification](../../testing/evidence/P1-002-review.md).
-- [P1-003 learning](P1-003.md) · [verification](../../testing/evidence/P1-003-review.md).
-- [P1-004 learning](P1-004.md) · [verification](../../testing/evidence/P1-004-review.md).
-- [P1-005 learning](P1-005.md) · [verification](../../testing/evidence/P1-005-review.md).
-- [P1-006 learning](P1-006.md) · [verification](../../testing/evidence/P1-006-review.md).
-- [P1-007 learning](P1-007.md) · [verification](../../testing/evidence/P1-007-review.md).
-- [P1-008 learning](P1-008.md) · [verification](../../testing/evidence/P1-008-review.md).
-- [P1-009 learning](P1-009.md) · [verification](../../testing/evidence/P1-009-review.md).
-- [P1-010 learning](P1-010.md) · [verification](../../testing/evidence/P1-010-review.md).
-- [P1-011 learning](P1-011.md) · [verification](../../testing/evidence/P1-011-review.md).
-- [P1-012 learning](P1-012.md) · [verification](../../testing/evidence/P1-012-review.md).
-
-Use the [11-section template](../TEMPLATE.md) and [journal rules](../README.md). P1-013 and later are outside this request; no future task notes are pre-created. Return to [documentation index](../../README.md).
+- [P1-001 — Create GitHub repository](P1-001.md) · [evidence](../../testing/evidence/P1-001-review.md).
+- [P1-002 — Write README](P1-002.md) · [evidence](../../testing/evidence/P1-002-review.md).
+- [P1-003 — Configure .gitignore](P1-003.md) · [evidence](../../testing/evidence/P1-003-review.md).
+- [P1-004 — Configure .editorconfig](P1-004.md) · [evidence](../../testing/evidence/P1-004-review.md).
+- [P1-005 — Define branch naming](P1-005.md) · [evidence](../../testing/evidence/P1-005-review.md).
+- [P1-006 — Define Conventional Commits](P1-006.md) · [evidence](../../testing/evidence/P1-006-review.md).
+- [P1-007 — Define PR review rules](P1-007.md) · [evidence](../../testing/evidence/P1-007-review.md).
+- [P1-008 — Create issue templates](P1-008.md) · [evidence](../../testing/evidence/P1-008-review.md).
+- [P1-009 — Create PR template](P1-009.md) · [evidence](../../testing/evidence/P1-009-review.md).
+- [P1-010 — Create SECURITY.md](P1-010.md) · [evidence](../../testing/evidence/P1-010-review.md).
+- [P1-011 — Create CONTRIBUTING.md](P1-011.md) · [evidence](../../testing/evidence/P1-011-review.md).
+- [P1-012 — Create documentation tree](P1-012.md) · [evidence](../../testing/evidence/P1-012-review.md).
+- [P1-013 — Install JDK](P1-013.md) · [evidence](../../testing/evidence/P1-013-review.md).
+- [P1-014 — Configure JAVA_HOME](P1-014.md) · [evidence](../../testing/evidence/P1-014-review.md).
+- [P1-015 — Verify Java compiler](P1-015.md) · [evidence](../../testing/evidence/P1-015-review.md).
+- [P1-016 — Install Maven](P1-016.md) · [evidence](../../testing/evidence/P1-016-review.md).
+- [P1-017 — Verify Maven](P1-017.md) · [evidence](../../testing/evidence/P1-017-review.md).
+- [P1-018 — Install Docker](P1-018.md) · [evidence](../../testing/evidence/P1-018-review.md).
+- [P1-019 — Verify Docker Compose](P1-019.md) · [evidence](../../testing/evidence/P1-019-review.md).
+- [P1-020 — Run test container](P1-020.md) · [evidence](../../testing/evidence/P1-020-review.md).
+- [P1-021 — Install Git](P1-021.md) · [evidence](../../testing/evidence/P1-021-review.md).
+- [P1-022 — Configure IDE](P1-022.md) · [evidence](../../testing/evidence/P1-022-review.md).
+- [P1-023 — Configure Java formatter](P1-023.md) · [evidence](../../testing/evidence/P1-023-review.md).
+- [P1-024 — Configure static inspections](P1-024.md) · [evidence](../../testing/evidence/P1-024-review.md).
+- [P1-025 — Install Kafka CLI](P1-025.md) · [evidence](../../testing/evidence/P1-025-review.md).
+- [P1-026 — Verify PostgreSQL CLI](P1-026.md) · [evidence](../../testing/evidence/P1-026-review.md).
+- [P1-027 — Define package naming](P1-027.md) · [evidence](../../testing/evidence/P1-027-review.md).
+- [P1-028 — Define class naming](P1-028.md) · [evidence](../../testing/evidence/P1-028-review.md).
+- [P1-029 — Define exception handling standards](P1-029.md) · [evidence](../../testing/evidence/P1-029-review.md).
+- [P1-030 — Define logging standards](P1-030.md) · [evidence](../../testing/evidence/P1-030-review.md).
+- [P1-031 — Define configuration conventions](P1-031.md) · [evidence](../../testing/evidence/P1-031-review.md).
+- [P1-032 — Define Maven dependency management](P1-032.md) · [evidence](../../testing/evidence/P1-032-review.md).
+- [P1-033 — Configure compiler plugin](P1-033.md) · [evidence](../../testing/evidence/P1-033-review.md).
+- [P1-034 — Configure test plugins](P1-034.md) · [evidence](../../testing/evidence/P1-034-review.md).
+- [P1-035 — Configure formatter and static analysis](P1-035.md) · [evidence](../../testing/evidence/P1-035-review.md).
+- [P1-036 — Define review checklist](P1-036.md) · [evidence](../../testing/evidence/P1-036-review.md).
+- [P1-037 — Create GitHub Actions workflow](P1-037.md) · [evidence](../../testing/evidence/P1-037-review.md).
+- [P1-038 — Configure checkout step](P1-038.md) · [evidence](../../testing/evidence/P1-038-review.md).
+- [P1-039 — Configure JDK setup](P1-039.md) · [evidence](../../testing/evidence/P1-039-review.md).
+- [P1-040 — Configure Maven build](P1-040.md) · [evidence](../../testing/evidence/P1-040-review.md).
+- [P1-041 — Run unit tests in CI](P1-041.md) · [evidence](../../testing/evidence/P1-041-review.md).
+- [P1-042 — Publish CI test artifacts](P1-042.md) · [evidence](../../testing/evidence/P1-042-review.md).
+- [P1-043 — Configure CI failure reporting](P1-043.md) · [evidence](../../testing/evidence/P1-043-review.md).
