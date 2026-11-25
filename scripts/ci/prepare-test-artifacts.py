@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Publish test status without JVM properties, captured output or failure payloads."""
 import xml.etree.ElementTree as ET
+import sys
 from pathlib import Path
 
 
@@ -29,4 +30,4 @@ def prepare(target):
 
 
 if __name__ == "__main__":
-    prepare(Path("tools/build-verification/target"))
+    prepare(Path(sys.argv[1] if len(sys.argv) == 2 else "tools/build-verification/target"))

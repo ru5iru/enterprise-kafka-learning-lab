@@ -24,5 +24,6 @@ Use the [ADR process](decisions/README.md) and [template](decisions/0000-templat
 12. [WSL container runtime](decisions/0012-wsl-container-runtime.md).
 13. [Tooling-only build verification](decisions/0013-p1-build-verification.md).
 14. [CI trust and evidence](decisions/0014-ci-trust-and-evidence.md).
+15. [Independent non-web Spring Boot starter](decisions/0015-minimal-spring-boot-starter.md).
 
-Version choices have dated sources and compatibility limits. P1 installs/verifies the WSL development tools and CI tooling module; Kafka broker/application/database deployment remains future work. Update affected diagrams and task learning notes when behavior changes; do not silently rewrite the original roadmap. Return to [documentation index](../README.md).
+Version choices have dated sources and compatibility limits. P1 installs/verifies the WSL development tools and CI tooling module. P2-014 adds a local non-web Spring Boot starter; Kafka broker, business services, database and deployment remain future work. Update affected diagrams and task learning notes when behavior changes; do not silently rewrite the original roadmap. Return to [documentation index](../README.md).
